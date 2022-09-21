@@ -1,0 +1,49 @@
+﻿@model identityWithChristina.Models.Order
+
+@{
+    Layout = "_Layout1";
+    ViewData["Title"] = "checkedOut";
+}
+
+<h2 class="text-center mt-5">Checked Out</h2>
+
+<div class="text-center col-6" style="margin: 10px auto;">
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-6">
+            Order Date
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt class = "col-sm-6">
+            Shipping Date
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.ShipDate)
+        </dd>
+        <dt class = "col-sm-6">
+            Shipping Address
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.ShipAddress)
+        </dd>
+        <dt class = "col-sm-6">
+            Total Points
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.TotalPoints)
+        </dd>
+        <dt class = "col-sm-6">
+            Number Of Products
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.NumberOfProducts)
+        </dd>
+      
+    </dl>
+</div>
+<div class="col-6 justify-content-center text-center align-content-center" style="margin:20px auto">
+    
+    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-primary text-center">Back</a>
+</div>

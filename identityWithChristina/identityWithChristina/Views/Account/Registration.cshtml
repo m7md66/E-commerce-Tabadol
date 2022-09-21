@@ -1,0 +1,49 @@
+﻿
+@model identityWithChristina.ViewModel.RegisterAccountViewModel
+@{
+     
+    ViewData["Title"] = "Registration";
+   Layout = "~/Views/Shared/_Layout1.cshtml";
+
+}
+
+
+
+<h1 class="text-center"></h1>
+<div class="row justify-content-center">
+    <div class="col-md-4" style="margin:20px 0px;">
+        <form asp-action="Registration" method="post">
+            <h2>Registration</h2>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" maxlength="100" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+           <input type="submit" value=" Register" class="cart-btn pbtn justify-content-center " />
+        </form>
+    </div>
+ </div>
+    
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

@@ -1,0 +1,88 @@
+﻿@{
+    Layout="_Layout1";
+    ViewBag.Title = "Donations";
+}
+@model AssociationUserViewModel;
+<link rel="stylesheet" href="~/css/css/donate.css" />
+<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Donation Instituations Information Details</p>
+						<h1>Donation Instituations</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- cart -->
+     @if (User.IsInRole("Admin"))
+{
+    
+    <div class="product-section mt-100 mb-150">
+		<div class="container">
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+					
+                        <ul >
+                            <li class="active" data-filter="*"> <a asp-controller="Associations" asp-action="Create" class="cart-btn">Create Association</a> </li>
+						
+						
+                        </ul>
+						
+
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>	
+}
+<div class="cart-section mt-150">
+		<div class="container">
+            <div class="row">
+
+            @foreach(var association in Model.Associations)
+            {
+                if (association != null)
+                {
+                    <div class="col-sm">
+
+                      <div class="car">
+                        <div class="car-img"><img src="@association.AssLogoUrl" width="100%"></div>
+                        <div class="car-detail">
+                            <div class="car-width">
+                                <div class="address"> @association.Assname </div>
+                                <div class="address"> @association.AssAddress </div>
+                                <div class="car-info">@association.AssDescription </div>
+                                 @if (User.IsInRole("Admin"))
+                                 {
+                               <a class="cart-btn" asp-action="Edit" asp-route-id=" @association.Assid" asp-controller="Associations" >Edit Associaction </a><br><br />
+                               <a class="cart-btn" asp-action="Delete" asp-route-id=" @association.Assid" asp-controller="Associations" onclick="return confirm('do you want to delete @association.Assname association')">Delete Associaction</a><br /> <br />
+                                 }
+                                @if (!User.IsInRole("Admin"))
+                                 {
+                                <a class="cart-btn"asp-controller="Associations" asp-action="DonateUserProduct" asp-route-id="@association.Assid">Your Products for Donation</a><br /><br />
+                                <a class="cart-btn"asp-controller="Associations" asp-action="DonateNew" asp-route-id=" @association.Assid">Donate New</a><br /><br />
+                           
+                                 }
+     </div>
+                        </div>
+                    </div>  
+              
+              </div>
+                }
+            }
+        
+               
+
+                   
+            </div>
+        </div>
+	</div>
+	<!-- end cart -->
+               
